@@ -8,4 +8,4 @@ You will need to create a config.ini file in the parent directory matching the f
 ```[slack]
 channel_id = <channel_id>
 starting_ts = 0
-token = <botToken>```
+token = <botToken>
