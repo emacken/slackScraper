@@ -5,6 +5,8 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
 
+# Calls the Slack API to return the list of messages that are seen after the timestamp of 'oldest'
+# Returns a list of the 'message' parameter returned by the API or None if no messages are present.
 def getConversationHistory(token, channel_id, oldest):
     # WebClient instantiates a client that can call API methods
     # When using Bolt, you can use either `app.client` or the `client` passed to listeners.
@@ -15,6 +17,7 @@ def getConversationHistory(token, channel_id, oldest):
         # https://api.slack.com/methods/conversations.history$pagination
         result = client.conversations_history(channel=channel_id, oldest=oldest)
 
+        print(type(result['messages']))
         if result['messages']:
             return result["messages"]
         else:

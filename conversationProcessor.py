@@ -2,17 +2,20 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 
-def historyToList(history):
-    msgList = []
+# Takes the full conversation_history and returns a list of the message text
+def historyToList(history) -> list:
+    msg_list = []
     for msg in history:
-        msgList.append(msg['text'])
+        msg_list.append(msg['text'])
 
-    print(msgList)
-    return msgList
+    return msg_list
 
 
-def makeCloud(msgList):
-    unique_string = (" ").join(msgList)
+# TODO define logic to scan messages for tag keys and group into dictionary
+def makeCloud(msg_list, tag_dict):
+    unique_string = " ".join(msg_list)
+    print(msg_list)
+    print(unique_string)
     wordcloud = WordCloud(width=1000, height=500).generate(unique_string)
     plt.figure(figsize=(15, 8))
     plt.imshow(wordcloud)
